@@ -1,0 +1,11 @@
+--- plproxy-2.4/Makefile.old	2012-07-27 02:43:43.705705923 +0300
++++ plproxy-2.4/Makefile	2012-07-27 02:44:00.841706317 +0300
+@@ -8,7 +8,7 @@
+ NO_SELECT = 0
+ 
+ # libpq config
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
+ PQINCSERVER = $(shell $(PG_CONFIG) --includedir-server)
+ PQINC = $(shell $(PG_CONFIG) --includedir)
+ PQLIB = $(shell $(PG_CONFIG) --libdir)

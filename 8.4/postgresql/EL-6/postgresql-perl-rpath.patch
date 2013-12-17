@@ -1,0 +1,12 @@
+--- postgresql-8.4.4/src/pl/plperl/GNUmakefile.old	2010-05-15 13:31:18.015808738 +0300
++++ postgresql-8.4.4/src/pl/plperl/GNUmakefile	2010-05-15 13:31:46.194181837 +0300
+@@ -38,6 +38,9 @@
+ 
+ SHLIB_LINK = $(perl_embed_ldflags)
+ 
++# Force rpath to be used even though we disable it everywhere else
++SHLIB_LINK += $(rpath)
++
+ REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-language=plperl  --load-language=plperlu
+ REGRESS = plperl plperl_trigger plperl_shared plperl_elog
+ # if Perl can support two interpreters in one backend, 

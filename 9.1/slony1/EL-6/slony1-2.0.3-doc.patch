@@ -1,0 +1,14 @@
+--- doc/adminguide/faq.sgml.old	2010-04-10 15:29:56.000000000 +0300
++++ doc/adminguide/faq.sgml	2010-04-10 15:37:54.000000000 +0300
+@@ -296,10 +296,10 @@
+ <listitem><para> You might might <quote>hack</quote> <filename>scan.c</filename> by hand to use the matching type. </para> </listitem>
+ <listitem><para> You might select different versions of <application>bison</application> or <application>flex</application> so as to get versions whose data types match. </para> </listitem>
+ <listitem><para> Note that you may have multiple versions of <application>bison</application> or <application>flex</application> around, and might need to modify <envar>PATH</envar> in order to select the appropriate one.</para></listitem>
++</itemizedlist>
+ </answer>
+ 
+ 
+-
+ </qandaentry>
+ 
+ </qandadiv>

@@ -1,0 +1,11 @@
+--- pgtap-0.24/Makefile.old	2010-10-07 16:53:30.000000000 +0300
++++ pgtap-0.24/Makefile	2010-10-07 16:53:56.000000000 +0300
+@@ -11,7 +11,7 @@
+ PG_CONFIG := $(top_builddir)/src/bin/pg_config/pg_config
+ else
+ # Run pg_config to get the PGXS Makefiles
+-PG_CONFIG = pg_config
++PG_CONFIG=/usr/pgsql-9.0/bin/pg_config
+ PGXS := $(shell $(PG_CONFIG) --pgxs)
+ endif
+ 

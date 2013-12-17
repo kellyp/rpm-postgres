@@ -1,0 +1,47 @@
+--- sql/Makefile.old	2013-11-12 09:44:32.066789243 +0000
++++ sql/Makefile	2013-11-12 09:47:59.610713369 +0000
+@@ -29,7 +29,8 @@
+ top_builddir = ..
+ 
+ ifdef USE_PGXS
+-PGXS = $(shell pg_config --pgxs)
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
++PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else
+ subdir = contrib
+--- sql/pgpool-recovery/Makefile.old	2013-11-12 09:44:34.943815901 +0000
++++ sql/pgpool-recovery/Makefile	2013-11-12 09:44:52.901982305 +0000
+@@ -14,7 +14,8 @@
+ top_builddir = ../..
+ 
+ ifdef USE_PGXS
+-PGXS = $(shell pg_config --pgxs)
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
++PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else
+ subdir = contrib/pgpool-recovery
+--- sql/pgpool-regclass/Makefile.old	2013-11-12 09:44:38.769851341 +0000
++++ sql/pgpool-regclass/Makefile	2013-11-12 09:44:45.511913825 +0000
+@@ -14,7 +14,8 @@
+ top_builddir = ../..
+ 
+ ifdef USE_PGXS
+-PGXS = $(shell pg_config --pgxs)
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
++PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else
+ subdir = contrib/pgpool-regclass
+--- pgpool_adm/Makefile.old	2013-11-12 09:57:59.856289270 +0000
++++ pgpool_adm/Makefile	2013-11-12 09:58:13.688417939 +0000
+@@ -9,7 +9,7 @@
+ SHLIB_LINK = -lpcp
+ 
+ ifdef USE_PGXS
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
+ PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else

@@ -1,0 +1,11 @@
+--- pg_comparator-1.6.1/Makefile.old	2010-10-08 13:21:43.000000000 +0300
++++ pg_comparator-1.6.1/Makefile	2010-04-03 17:06:36.000000000 +0300
+@@ -13,7 +13,7 @@
+ EXTRA_CLEAN	= $(name).1 $(name).html pod2htm?.tmp
+ 
+ # get postgresql extension infrastructure
+-PG_CONFIG	= pg_config
++PG_CONFIG	= /usr/pgsql-9.2/bin/pg_config
+ PGXS	:= $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ 

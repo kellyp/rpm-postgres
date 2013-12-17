@@ -1,0 +1,16 @@
+--- slony1-2.1.2/redhat/slony1.init.old	2012-09-05 17:15:48.774325565 +0100
++++ slony1-2.1.2/redhat/slony1.init	2012-09-07 00:53:26.171895425 +0100
+@@ -44,11 +44,10 @@
+ fi
+ 
+ # Set defaults for configuration variables
+-SLONENGINE=/usr/bin
+ SLONDAEMON=$SLONENGINE/slon
+-SLONCONF=/etc/slon.conf
++SLONCONF=/etc/slony1-91-II/slon.conf
+ SLONPID=/var/run/slon.pid
+-SLONLOG=/var/log/slony
++SLONLOG=/var/log/slony.log
+ test -x $SLONDAEMON || exit 5
+ 
+ 

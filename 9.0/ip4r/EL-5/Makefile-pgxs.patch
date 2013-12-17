@@ -1,0 +1,11 @@
+--- ip4r-1.05/Makefile.old	2010-10-12 10:45:05.000000000 +0300
++++ ip4r-1.05/Makefile	2010-10-12 10:45:18.000000000 +0300
+@@ -4,7 +4,7 @@
+ DOCS = README.ip4r
+ 
+ ifdef USE_PGXS
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.0/bin/pg_config
+ PG_CPPFLAGS = -DIP4R_PGVER=$(shell echo $(VERSION) | awk -F. '{ print ($$1*1000+$$2)*1000+$$3 }')
+ PGXS = $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)

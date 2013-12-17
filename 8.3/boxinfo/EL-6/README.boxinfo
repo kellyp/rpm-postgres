@@ -1,0 +1,75 @@
+Contents
+
+    * 1 Download
+    * 2 Basic Usage
+          o 2.1 boxinfo.html
+          o 2.2 boxinfo.debug
+    * 3 Command Line Options
+    * 4 Bugs and Feature Requests
+    * 5 Development
+    * 6 Contributors
+
+Download
+
+The latest version, 1.3.2, can be downloaded here:
+
+    * boxinfo.pl
+    * boxinfo.pl.asc 
+
+Basic Usage
+
+Usage is simply to run:
+
+ perl boxinfo.pl
+
+It is preferred that the script gets run as the 'root' user, as some of the information can only be gathered by that user. Two files are created by the script:
+boxinfo.html
+
+This is the final result, either in HTML or MediaWiki format (see the --format argument below). A sample output page is available.
+boxinfo.debug
+
+This is a copy of each command that was run, and the result. Feel free to delete it, it is only useful for debugging.
+Command Line Options
+
+    * --version
+          o Returns the version number. 
+    * --verbose
+          o Increases the level of verbosity. 
+    * --format=X
+          o Which format to output. Valid options are 'html' and 'wiki'. The default is 'wiki', which creates the page with special features to support MediaWiki. 
+    * --os=X
+          o Overrides automatic detection of the OS with the given name. 
+    * --client=X
+          o Overrides automatic detection of the client name (derived from the first part of the hostname). This is used at the top of the output, and defaults to 'ACME' if the name cannot be determined. 
+    * --postgresonly
+          o Only perform the Postgres-specific parts of the program. 
+    * --nopostgres
+          o Skip the Postgres-specific parts of the program. 
+    * --skippgport=X
+          o Do not attempt to connect to the Postgres cluster on the given port number. 
+    * --nohost
+          o Do not attempt host lookups of IPs. May greatly speed up the running of the script. 
+    * --nomysql
+          o Skip the Mysql-specific parts of the program. 
+    * --nosendmail
+          o Skip the Sendmail-specific parts of the program. 
+    * --useballoons=X
+          o Whether or not to use tooltip balloons for MediaWiki output. Takes 0 or 1, defaults to 1. 
+    * --timeout=X
+          o Sets the maximum time to wait for each command to finish before giving up. The default is 10 seconds. 
+
+Bugs and Feature Requests
+
+Bugs should be reported through the bugzilla bug tracking site. Feature requests are welcome there as well, or send us an email.
+Development
+
+Everyone is encouraged to look over and make improvements to the code. The latest development version can be obtained by running:
+
+ git clone git://bucardo.org/boxinfo.git
+
+There is also a GitHub mirror for easy patch contribution by the general public.
+Contributors
+
+    * Greg Sabino Mullane (greg@endpoint.com)
+    * David Christensen (david@endpoint.com)
+    * Greg Smith (gsmith@gregsmith.com) 

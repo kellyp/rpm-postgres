@@ -1,0 +1,11 @@
+--- Makefile.old	2013-02-26 22:31:15.005218887 +0200
++++ Makefile	2013-02-26 22:31:18.276218962 +0200
+@@ -1,8 +1,6 @@
+ # $Header: /cvsroot/autodoc/autodoc/Makefile,v 1.9 2009/08/11 18:50:02 rbt Exp $
+ 
+ # install configuration
+-DESTDIR =
+-PREFIX = /usr/local
+ BINDIR = ${PREFIX}/bin
+ DATADIR = ${PREFIX}/share/postgresql_autodoc
+ MANDIR = ${PREFIX}/share/man/man1

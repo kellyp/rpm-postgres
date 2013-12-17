@@ -1,0 +1,54 @@
+--- core/sql/routing_core.sql.old	2012-11-12 14:27:09.791082416 +0200
++++ core/sql/routing_core.sql	2012-11-12 14:28:10.336083382 +0200
+@@ -29,7 +29,7 @@
+         target_id integer, directed boolean, has_reverse_cost boolean)
+         RETURNS SETOF path_result
+         AS '$libdir/librouting'
+-        LANGUAGE 'C' IMMUTABLE STRICT;
++        LANGUAGE C IMMUTABLE STRICT;
+ 
+ -----------------------------------------------------------------------
+ -- Core function for shortest_path_astar computation
+@@ -40,7 +40,7 @@
+         target_id integer,directed boolean, has_reverse_cost boolean)
+          RETURNS SETOF path_result
+          AS '$libdir/librouting'
+-         LANGUAGE 'C' IMMUTABLE STRICT; 
++         LANGUAGE C IMMUTABLE STRICT; 
+ 
+ -----------------------------------------------------------------------
+ -- Core function for shortest_path_astar computation
+@@ -50,7 +50,7 @@
+         target_id integer,directed boolean, has_reverse_cost boolean)
+          RETURNS SETOF path_result
+          AS '$libdir/librouting'
+-         LANGUAGE 'C' IMMUTABLE STRICT; 
++         LANGUAGE C IMMUTABLE STRICT; 
+ 
+ -----------------------------------------------------------------------
+ -- This function should not be used directly. Use create_graph_tables instead
+--- ./extra/tsp/sql/routing_tsp.sql.old	2012-11-12 14:29:14.658080925 +0200
++++ ./extra/tsp/sql/routing_tsp.sql	2012-11-12 14:29:21.016118452 +0200
+@@ -24,4 +24,4 @@
+ CREATE OR REPLACE FUNCTION tsp(sql text, ids varchar, source integer)
+         RETURNS SETOF path_result
+         AS '$libdir/librouting_tsp'
+-        LANGUAGE 'C' IMMUTABLE STRICT;
++        LANGUAGE C IMMUTABLE STRICT;
+--- ./extra/driving_distance/sql/routing_dd.sql.old	2012-11-12 14:28:49.366077415 +0200
++++ ./extra/driving_distance/sql/routing_dd.sql	2012-11-12 14:28:58.098082121 +0200
+@@ -25,7 +25,7 @@
+         distance float8,directed boolean, has_reverse_cost boolean)
+         RETURNS SETOF path_result
+         AS '$libdir/librouting_dd'
+-        LANGUAGE 'C' IMMUTABLE STRICT;
++        LANGUAGE C IMMUTABLE STRICT;
+                         
+ -----------------------------------------------------------------------
+ -- Core function for alpha shape computation.
+@@ -35,4 +35,4 @@
+ CREATE OR REPLACE FUNCTION alphashape(sql text)
+         RETURNS SETOF vertex_result
+         AS '$libdir/librouting_dd'
+-        LANGUAGE 'C' IMMUTABLE STRICT;
++        LANGUAGE C IMMUTABLE STRICT;

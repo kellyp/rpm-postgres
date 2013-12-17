@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+#   /etc/rc.d/init.d/pgagent
+#
+# Starts / stops the pgagent daemon
+#
+# chkconfig: - 65 35
+# description: PgAgent Postgresql Job Service
+# processname: pgagent
+
+# Source function library.
+. /etc/init.d/functions
+
+# Find the name of the script
+NAME=`basename $0`
+if [ ${NAME:0:1} = "S" -o ${NAME:0:1} = "K" ]
+then
+    	NAME=${NAME:3}
+fi
+
+# For SELinux we need to use 'runuser' not 'su'
+if [ -x /sbin/runuser ]
+then
+    SU=runuser
+else
+    SU=su
+fi
+
+DBNAME=${DBNAME- postgres}
+DBUSER=${DBUSER- postgres}
+DBHOST=${DBHOST- 127.0.0.1}
+DBPORT=${DBPORT- 5432}
+LOGFILE=${LOGFILE- /var/log/pgagent_91.log}
+lockfile="/var/lock/subsys/${NAME}"
+
+# Override defaults from /etc/sysconfig/pgagent/ directory,  if file is present:
+[ -f /etc/sysconfig/pgagent/${NAME} ] && . /etc/sysconfig/pgagent/${NAME}
+
+RETVAL=0
+prog="PgAgent"
+
+start() {
+     # Make sure that pgbouncer is not already running:
+	 if [ -f $lockfile ]
+	then
+		echo "${NAME} is already running"
+		echo_success
+		echo
+		exit 0
+	fi
+
+    echo $"Starting ${NAME} service: "
+
+    $SU pgagent -c "pgagent -s $LOGFILE hostaddr=$DBHOST dbname=$DBNAME user=$DBUSER port=$DBPORT"
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ]
+	then
+		echo_success
+		echo
+		touch "$lockfile"
+        else
+            	echo_failure
+		echo
+                script_result=1
+       	fi
+}
+
+stop(){
+    echo $"Stopping ${NAME} service: "
+
+    killproc /usr/bin/pgagent
+
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ]
+	then
+		echo_success
+		echo
+		rm -f "$lockfile"
+        else
+            	echo_failure
+		echo
+                script_result=1
+       	fi
+}
+
+#
+#   See how we were called.
+#
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  reload|restart)
+    stop
+    start
+    RETVAL=$?
+    ;;
+  status)
+    status /usr/bin/pgagent
+    RETVAL=$?
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|restart|reload|status}"
+    exit 1
+esac
+
+exit $RETVAL
+

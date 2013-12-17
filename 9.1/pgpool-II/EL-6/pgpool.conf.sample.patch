@@ -1,0 +1,48 @@
+--- pgpool.conf.sample.old	2013-11-12 09:59:33.761162864 +0000
++++ pgpool.conf.sample	2013-11-12 09:59:41.054230722 +0000
+@@ -33,8 +33,6 @@
+                                    # (change requires restart)
+ socket_dir = '/tmp'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -45,19 +43,17 @@
+                                    # (change requires restart)
+ pcp_socket_dir = '/tmp'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+ 
+-#backend_hostname0 = 'host1'
++backend_hostname0 = 'localhost'
+                                    # Host name or IP address to connect to for backend 0
+-#backend_port0 = 5432
++backend_port0 = 5432
+                                    # Port number for backend 0
+-#backend_weight0 = 1
++backend_weight0 = 1
+                                    # Weight for backend 0 (only in load balancing mode)
+-#backend_data_directory0 = '/data'
++backend_data_directory0 = '/var/lib/pgsql/9.1/data'
+                                    # Data directory for backend 0
+ #backend_flag0 = 'ALLOW_TO_FAILOVER'
+                                    # Controls various backend behavior
+@@ -180,10 +176,10 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/var/run/pgpool-II-91/pgpool.pid'
+                                    # PID file name
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/var/log/pgpool-II'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 

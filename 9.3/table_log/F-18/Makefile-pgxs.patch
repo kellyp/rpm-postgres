@@ -1,0 +1,12 @@
+--- table_log-0.4.4/Makefile.old	2010-09-11 03:44:19.599109120 +0300
++++ table_log-0.4.4/Makefile	2010-09-11 03:44:28.345231558 +0300
+@@ -3,7 +3,8 @@
+ DOCS = README.table_log
+ 
+ ifdef USE_PGXS
+-  PGXS := $(shell pg_config --pgxs)
++  PG_CONFIG=/usr/pgsql-9.3/bin/pg_config
++  PGXS := $(shell $(PG_CONFIG) --pgxs)
+   include $(PGXS)
+ else
+   subdir = contrib/table_log

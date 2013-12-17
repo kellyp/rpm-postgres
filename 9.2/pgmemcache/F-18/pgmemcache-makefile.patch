@@ -1,0 +1,11 @@
+--- Makefile.old	2013-11-20 15:11:06.496699686 +0200
++++ Makefile	2013-11-20 15:11:31.057039290 +0200
+@@ -13,7 +13,7 @@
+ 
+ SHLIB_LINK = -lmemcached -lsasl2
+ 
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
+ PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ 

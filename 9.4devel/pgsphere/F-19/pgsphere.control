@@ -1,0 +1,6 @@
+# pgsphere extension
+comment = 'pgsphere spherical coordinates and objects, and indexing of spherical objects'
+default_version = '1.1.1'
+module_pathname = '$libdir/pg_sphere'
+relocatable = true
+

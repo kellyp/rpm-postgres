@@ -1,0 +1,6 @@
+
+--This line, and those below, will be ignored--
+
+M    EL-6/pgrouting.spec
+A  + EL-6/pgrouting-remove-createlang-quotes.patch
+D    EL-6/pgrouting-pg84.patch

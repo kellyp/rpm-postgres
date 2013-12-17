@@ -1,0 +1,11 @@
+--- plr/Makefile.old	2010-10-08 10:00:18.000000000 +0300
++++ plr/Makefile	2010-10-08 10:00:35.000000000 +0300
+@@ -29,7 +29,7 @@
+ 
+ ifdef USE_PGXS
+ ifndef PG_CONFIG
+-PG_CONFIG := pg_config
++PG_CONFIG := /usr/pgsql-9.3/bin/pg_config
+ endif
+ PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)

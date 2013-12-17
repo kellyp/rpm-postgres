@@ -1,0 +1,24 @@
+--- Makefile.old	2012-09-20 22:45:08.000000000 +0300
++++ Makefile	2012-09-20 22:45:42.000000000 +0300
+@@ -20,7 +20,7 @@
+ endif
+ 
+ ifdef USE_PGXS
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
+ PGXS := $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else
+@@ -61,11 +61,7 @@
+ endif
+ 
+ $(srcdir)/sqlscan.c: sqlscan.l
+-ifdef FLEX
+-	$(FLEX) $(FLEXFLAGS) -o'$@' $<
+-else
+-	@$(missing) flex $< $@
+-endif
++	/usr/bin/flex $(FLEXFLAGS) -o'$@' $<
+ 
+ distprep: $(srcdir)/sqlparse.c $(srcdir)/sqlscan.c
+ 

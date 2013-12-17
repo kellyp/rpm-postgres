@@ -1,0 +1,72 @@
+--- skytools-2.1.11/configure.ac.old	2010-03-11 16:34:40.360175140 +0200
++++ skytools-2.1.11/configure.ac	2010-03-11 16:35:54.411174924 +0200
+@@ -36,6 +36,36 @@
+ fi
+ AC_SUBST(MAKE)
+ 
++dnl Check for ScanKeywordLookup arg numbers
++AC_MSG_CHECKING(for ScanKeywordLookup)
++if test -z "$ac_cv_ScanKeywordLookup_args"; then
++  AC_TRY_COMPILE(
++    [#include "postgres.h"
++     #include "parser/keywords.h"],
++    [ScanKeywordLookup(NULL, NULL, NULL);],
++     ac_cv_ScanKeywordLookup_args=3)
++  AC_MSG_RESULT([yes, and it takes $ac_cv_ScanKeywordLookup_args arguments])
++else
++  AC_TRY_COMPILE(
++    [#include "postgres.h"
++     #include "parser/keywords.h"],
++    [ScanKeywordLookup(NULL);],
++     ac_cv_ScanKeywordLookup_args=1)
++  AC_MSG_RESULT([yes, and it takes $ac_cv_ScanKeywordLookup_args arguments])
++fi
++
++AC_MSG_CHECKING(for ScanKeywordLookup)
++if test -z "$ac_cv_ScanKeywordLookup_args"; then
++  AC_MSG_RESULT(no)
++else
++  if test "$ac_cv_ScanKeywordLookup_args" = 1; then
++        AC_DEFINE(SCANKEYWORDLOOKUP_1)
++  elif test "$ac_cv_ScanKeywordLookup_args" = 3; then
++        AC_DEFINE(SCANKEYWORDLOOKUP_3)
++  fi
++  AC_MSG_RESULT([yes, and it takes $ac_cv_ScanKeywordLookup_args arguments])
++fi
++
+ dnl asciidoc >= 8.2
+ AC_ARG_WITH(asciidoc, [  --with-asciidoc[[=prog]]  path to asciidoc 8.2 (default: asciidoc)],
+ [ if test "$withval" = "yes"; then
+
+--- skytools-2.1.11/sql/logtriga/textbuf.c.old	2010-03-11 16:51:08.514800012 +0200
++++ skytools-2.1.11/sql/logtriga/textbuf.c	2010-03-11 16:51:57.923175007 +0200
+@@ -277,7 +277,13 @@
+                  * Note: ScanKeywordLookup() does case-insensitive comparison, but
+                  * that's fine, since we already know we have all-lower-case.
+                  */
+-                if (ScanKeywordLookup(ident) != NULL)
++#ifdef SCANKEYWORDLOOKUP_1
++		if (ScanKeywordLookup(ident) != NULL)
++#endif
++#ifdef SCANKEYWORDLOOKUP_3
++		if (ScanKeywordLookup(ident,ScanKeywords,NumScanKeywords) != NULL)
++#endif
++
+                         safe = false;
+         }
+ 
+--- skytools-2.1.11/sql/pgq/triggers/stringutil.c.old	2010-03-11 16:53:59.163799944 +0200
++++ skytools-2.1.11/sql/pgq/triggers/stringutil.c	2010-03-11 16:54:19.927174920 +0200
+@@ -199,7 +199,12 @@
+ 		 * Note: ScanKeywordLookup() does case-insensitive comparison, but
+ 		 * that's fine, since we already know we have all-lower-case.
+ 		 */
++#ifdef SCANKEYWORDLOOKUP_1
+ 		if (ScanKeywordLookup(ident) != NULL)
++#endif
++#ifdef SCANKEYWORDLOOKUP_3
++		if (ScanKeywordLookup(ident,ScanKeywords,NumScanKeywords) != NULL)
++#endif
+ 			safe = false;
+ 	}
+ 

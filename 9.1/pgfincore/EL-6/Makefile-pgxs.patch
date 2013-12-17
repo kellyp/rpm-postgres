@@ -1,0 +1,11 @@
+--- Makefile.old	2011-12-19 00:48:01.980369369 +0200
++++ Makefile	2011-12-19 00:48:09.587369543 +0200
+@@ -5,7 +5,7 @@
+ MODULES      = $(EXTENSION)
+ DOCS         = README.rst
+ 
+-PG_CONFIG    = pg_config
++PG_CONFIG    = /usr/pgsql-9.1/bin/pg_config
+ BUILD_EXTENSION = $(shell $(PG_CONFIG) --version | grep -qE "8\.|9\.0" && echo no || echo yes)
+ 
+ # Default (no Extension support)

@@ -1,0 +1,11 @@
+--- PyGreSQL-4.0/setup.py.old	2010-10-12 11:14:58.000000000 +0300
++++ PyGreSQL-4.0/setup.py	2010-10-12 11:15:23.000000000 +0300
+@@ -50,7 +50,7 @@
+ 
+ def pg_config(s):
+     """Retrieve information about installed version of PostgreSQL."""
+-    f = os.popen("pg_config --%s" % s)
++    f = os.popen("/usr/pgsql-9.1/bin/pg_config --%s" % s)
+     d = f.readline().strip()
+     if f.close() is not None:
+         raise Exception("pg_config tool is not available.")

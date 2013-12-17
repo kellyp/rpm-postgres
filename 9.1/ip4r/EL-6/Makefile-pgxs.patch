@@ -1,0 +1,11 @@
+--- ip4r-2.0/Makefile.old	2013-09-15 22:44:26.076198631 +0300
++++ ip4r-2.0/Makefile	2013-09-15 22:44:31.967253484 +0300
+@@ -6,7 +6,7 @@
+ REGRESS = ip4r
+ 
+ ifndef NO_PGXS
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.1/bin/pg_config
+ PGXS = $(shell $(PG_CONFIG) --pgxs)
+ include $(PGXS)
+ else

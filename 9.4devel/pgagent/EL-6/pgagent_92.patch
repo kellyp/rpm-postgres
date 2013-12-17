@@ -1,0 +1,55 @@
+Index: /pgagent.init
+===================================================================
+--- pgagent.init.old	(revision 1106)
++++ pgagent.init	(working copy)
+@@ -10,14 +10,21 @@
+ 
+ # Source function library.
+ . /etc/init.d/functions
++if [ -e /etc/pgagent_92 ]; then
++    . /etc/pgagent_92
++fi
+ 
++DBNAME=${DBNAME- postgres}
++DBUSER=${DBUSER- postgres}
++DBHOST=${DBHOST- 127.0.0.1}
++LOGFILE=${LOGFILE- /var/log/pgagent_92.log}
+ 
+ RETVAL=0
+ prog="PgAgent"
+ 
+ start() {
+     echo -n $"Starting $prog: "
+-    daemon "pgagent hostaddr=127.0.0.1 dbname=postgres user=postgres"
++    daemon --user pgagent "pgagent -s $LOGFILE hostaddr=$DBHOST dbname=$DBNAME user=$DBUSER"
+     RETVAL=$?
+     echo
+ }
+Index: /pgagent.spec
+===================================================================
+--- pgagent.spec.old	(revision 1106)
++++ pgagent.spec	(working copy)
+@@ -4,7 +4,7 @@
+ 
+ Summary:	Job scheduler for PostgreSQL
+ Name:		%{sname}_%{pgmajorversion}
+-Version:	3.0.1
++Version:	3.2.1
+ Release:	1%{?dist}
+ License:	BSD
+ Group:		Applications/Databases
+@@ -20,6 +20,14 @@
+ of pgAdmin. From pgAdmin v1.9 onwards, pgAgent is shipped as 
+ a separate application.
+ 
++%pre
++groupadd -o -r pgagent >/dev/null 2>&1 || :
++useradd -o -g pgagent -r -s /bin/false \
++	-c "pgAgent Job Schedule" pgagent >/dev/null 2>&1 || :
++touch /var/log/pgagent_92.log
++chown pgagent:pgagent /var/log/pgagent_92.log
++chmod 0700 /var/log/pgagent_92.log
++
+ %prep
+ %setup -q -n pgAgent-%{version}-Source
+ 

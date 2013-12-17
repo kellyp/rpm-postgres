@@ -1,0 +1,11 @@
+--- doc/adminguide/locking.sgml.old	2010-12-10 03:00:51.000000000 +0200
++++ doc/adminguide/locking.sgml	2010-12-10 03:01:06.000000000 +0200
+@@ -103,7 +103,7 @@
+ --exclude-schema=schemaname to specifically exclude your Slony schema.
+ 
+ </para>
+-
++</listitem>
+ </itemizedlist>
+ 
+ <para> Each of these actions requires, at some point, modifying each

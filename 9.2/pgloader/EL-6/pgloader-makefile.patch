@@ -1,0 +1,15 @@
+--- Makefile.old	2013-01-08 23:44:35.679076519 +0200
++++ Makefile	2013-01-08 23:44:52.771105547 +0200
+@@ -9,6 +9,12 @@
+ VERSION = $(shell ./pgloader.py --version |cut -d' ' -f3)
+ SHORTVER= $(shell ./pgloader.py --version |cut -d' ' -f3 |cut -d '~' -f1)
+ 
++# for RPMs
++ifdef RPMDESTDIR
++
++libdir = $(LIBDIR)
++exdir =  $(EXDIR)
++else
+ # debian setting
+ DESTDIR =
+ 
