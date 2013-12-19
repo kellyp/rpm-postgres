@@ -3,7 +3,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 %global pgmajorversion 93
-%global pginstdir /usr/pgsql-9.3
+%global pginstdir /usr/pgsql-9.4devel
 %global sname psycopg2
 
 Summary:	A PostgreSQL database adapter for Python

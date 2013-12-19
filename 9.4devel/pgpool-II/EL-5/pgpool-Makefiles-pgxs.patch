@@ -5,7 +5,7 @@
  
  ifdef USE_PGXS
 -PGXS = $(shell pg_config --pgxs)
-+PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG = /usr/pgsql-9.4devel/bin/pg_config
 +PGXS := $(shell $(PG_CONFIG) --pgxs)
  include $(PGXS)
  else
@@ -17,7 +17,7 @@
  
  ifdef USE_PGXS
 -PGXS = $(shell pg_config --pgxs)
-+PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG = /usr/pgsql-9.4devel/bin/pg_config
 +PGXS := $(shell $(PG_CONFIG) --pgxs)
  include $(PGXS)
  else
@@ -29,7 +29,7 @@
  
  ifdef USE_PGXS
 -PGXS = $(shell pg_config --pgxs)
-+PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG = /usr/pgsql-9.4devel/bin/pg_config
 +PGXS := $(shell $(PG_CONFIG) --pgxs)
  include $(PGXS)
  else
@@ -41,7 +41,7 @@
  
  ifdef USE_PGXS
 -PG_CONFIG = pg_config
-+PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG = /usr/pgsql-9.4devel/bin/pg_config
  PGXS := $(shell $(PG_CONFIG) --pgxs)
  include $(PGXS)
  else

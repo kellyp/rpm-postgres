@@ -25,7 +25,7 @@
 %{!?gcj_support:%define gcj_support	1}
 %{!?upstreamver:%define upstreamver	9.3-1100}
 %global pgmajorversion 93
-%global pginstdir /usr/pgsql-9.3
+%global pginstdir /usr/pgsql-9.4devel
 %global sname postgresql-jdbc
 
 %global beta 0

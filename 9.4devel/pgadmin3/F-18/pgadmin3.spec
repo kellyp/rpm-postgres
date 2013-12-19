@@ -1,5 +1,5 @@
 %global pgmajorversion 93
-%global pginstdir /usr/pgsql-9.3
+%global pginstdir /usr/pgsql-9.4devel
 %global sname	pgadmin3
 
 Summary:	Graphical client for PostgreSQL

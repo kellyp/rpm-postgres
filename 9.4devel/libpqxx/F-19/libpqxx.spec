@@ -1,5 +1,5 @@
-%global pgmajorversion 93
-%global pginstdir /usr/pgsql-9.3
+%global pgmajorversion 94
+%global pginstdir /usr/pgsql-9.4devel
 
 Name:           libpqxx
 Epoch:          1

@@ -47,8 +47,9 @@
 %{!?kerbdir:%define kerbdir "/usr"}
 
 # This is a macro to be used with find_lang and other stuff
-%define majorversion 9.3
-%define packageversion 93
+%define majorversion 9.4devel
+%define majorversionforlang 9.4
+%define packageversion 94devel
 %define oname postgresql
 %define	pgbaseinstdir	/usr/pgsql-%{majorversion}
 
@@ -70,18 +71,18 @@
 
 Summary:	PostgreSQL client programs and libraries
 Name:		%{oname}%{packageversion}
-Version:	9.3.2
+Version:	9.4devel
 Release:	2PGDG%{?dist}
 License:	PostgreSQL
 Group:		Applications/Databases
 Url:		http://www.postgresql.org/ 
 
-Source0:	ftp://ftp.postgresql.org/pub/source/v%{version}/postgresql-%{version}.tar.bz2
+Source0:	postgresql-9.4devel.tar.gz
 Source4:	Makefile.regress
 Source5:	pg_config.h
 Source6:	README.rpm-dist
 Source7:	ecpg_config.h
-Source9:	postgresql-9.3-libs.conf
+Source9:	postgresql-9.4devel-libs.conf
 Source12:	http://www.postgresql.org/files/documentation/pdf/%{majorversion}/%{oname}-%{majorversion}-A4.pdf
 Source14:	postgresql.pam
 Source16:	filter-requires-perl-Pg.sh
@@ -531,38 +532,38 @@ cp /dev/null pltcl.lst
 cp /dev/null plpython.lst
 
 %if %nls
-%find_lang ecpg-%{majorversion}
-%find_lang ecpglib6-%{majorversion}
-%find_lang initdb-%{majorversion}
-%find_lang libpq5-%{majorversion}
-%find_lang pg_basebackup-%{majorversion}
-%find_lang pg_config-%{majorversion}
-%find_lang pg_controldata-%{majorversion}
-%find_lang pg_ctl-%{majorversion}
-%find_lang pg_dump-%{majorversion}
-%find_lang pg_resetxlog-%{majorversion}
-%find_lang pgscripts-%{majorversion}
+%find_lang ecpg-%{majorversionforlang}
+%find_lang ecpglib6-%{majorversionforlang}
+%find_lang initdb-%{majorversionforlang}
+%find_lang libpq5-%{majorversionforlang}
+%find_lang pg_basebackup-%{majorversionforlang}
+%find_lang pg_config-%{majorversionforlang}
+%find_lang pg_controldata-%{majorversionforlang}
+%find_lang pg_ctl-%{majorversionforlang}
+%find_lang pg_dump-%{majorversionforlang}
+%find_lang pg_resetxlog-%{majorversionforlang}
+%find_lang pgscripts-%{majorversionforlang}
 %if %plperl
-%find_lang plperl-%{majorversion}
-cat plperl-%{majorversion}.lang > pg_plperl.lst
+%find_lang plperl-%{majorversionforlang}
+cat plperl-%{majorversionforlang}.lang > pg_plperl.lst
 %endif
-%find_lang plpgsql-%{majorversion}
+%find_lang plpgsql-%{majorversionforlang}
 %if %plpython
-%find_lang plpython-%{majorversion}
-cat plpython-%{majorversion}.lang > pg_plpython.lst
+%find_lang plpython-%{majorversionforlang}
+cat plpython-%{majorversionforlang}.lang > pg_plpython.lst
 %endif
 %if %pltcl
-%find_lang pltcl-%{majorversion}
-cat pltcl-%{majorversion}.lang > pg_pltcl.lst
+%find_lang pltcl-%{majorversionforlang}
+cat pltcl-%{majorversionforlang}.lang > pg_pltcl.lst
 %endif
-%find_lang postgres-%{majorversion}
-%find_lang psql-%{majorversion}
+%find_lang postgres-%{majorversionforlang}
+%find_lang psql-%{majorversionforlang}
 %endif
 
-cat libpq5-%{majorversion}.lang > pg_libpq5.lst
-cat pg_config-%{majorversion}.lang ecpg-%{majorversion}.lang ecpglib6-%{majorversion}.lang > pg_devel.lst
-cat initdb-%{majorversion}.lang pg_ctl-%{majorversion}.lang psql-%{majorversion}.lang pg_dump-%{majorversion}.lang pg_basebackup-%{majorversion}.lang pgscripts-%{majorversion}.lang > pg_main.lst
-cat postgres-%{majorversion}.lang pg_resetxlog-%{majorversion}.lang pg_controldata-%{majorversion}.lang plpgsql-%{majorversion}.lang > pg_server.lst
+cat libpq5-%{majorversionforlang}.lang > pg_libpq5.lst
+cat pg_config-%{majorversionforlang}.lang ecpg-%{majorversionforlang}.lang ecpglib6-%{majorversionforlang}.lang > pg_devel.lst
+cat initdb-%{majorversionforlang}.lang pg_ctl-%{majorversionforlang}.lang psql-%{majorversionforlang}.lang pg_dump-%{majorversionforlang}.lang pg_basebackup-%{majorversionforlang}.lang pgscripts-%{majorversionforlang}.lang > pg_main.lst
+cat postgres-%{majorversionforlang}.lang pg_resetxlog-%{majorversionforlang}.lang pg_controldata-%{majorversionforlang}.lang plpgsql-%{majorversionforlang}.lang > pg_server.lst
 
 %pre server
 groupadd -g 26 -o -r postgres >/dev/null 2>&1 || :
@@ -582,15 +583,15 @@ fi
 # We now don't install .bash_profile as we used to in pre 9.0. Instead, use cat,
 # so that package manager will be happy during upgrade to new major version.
 echo "[ -f /etc/profile ] && source /etc/profile
-PGDATA=/var/lib/pgsql/9.3/data
+PGDATA=/var/lib/pgsql/9.4devel/data
 export PGDATA" >  /var/lib/pgsql/.bash_profile
 chown postgres: /var/lib/pgsql/.bash_profile
 
 %preun server
 if [ $1 -eq 0 ] ; then
 	# Package removal, not upgrade
-	/bin/systemctl --no-reload disable postgresql-9.3.service >/dev/null 2>&1 || :
-	/bin/systemctl stop postgresql-9.3.service >/dev/null 2>&1 || :
+	/bin/systemctl --no-reload disable postgresql-9.4devel.service >/dev/null 2>&1 || :
+	/bin/systemctl stop postgresql-9.4devel.service >/dev/null 2>&1 || :
 fi
 
 %postun server
@@ -598,7 +599,7 @@ fi
 /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 if [ $1 -ge 1 ] ; then
 	# Package upgrade, not uninstall
-	/bin/systemctl try-restart postgresql-9.3.service >/dev/null 2>&1 || :
+	/bin/systemctl try-restart postgresql-9.4devel.service >/dev/null 2>&1 || :
 fi
 
 %if %plperl
@@ -653,7 +654,7 @@ chown -R postgres:postgres /usr/share/pgsql/test >/dev/null 2>&1 || :
 %{_sbindir}/update-alternatives --install /usr/share/man/man1/vacuumdb.1   pgsql-vacuumdbman	  %{pgbaseinstdir}/share/man/man1/vacuumdb.1 930
 
 %post libs
-%{_sbindir}/update-alternatives --install /etc/ld.so.conf.d/postgresql-pgdg-libs.conf   pgsql-ld-conf        %{pgbaseinstdir}/share/postgresql-9.3-libs.conf 930
+%{_sbindir}/update-alternatives --install /etc/ld.so.conf.d/postgresql-pgdg-libs.conf   pgsql-ld-conf        %{pgbaseinstdir}/share/postgresql-9.4devel-libs.conf 930
 /sbin/ldconfig
 
 # Drop alternatives entries for common binaries and man files
@@ -694,7 +695,7 @@ if [ "$1" -eq 0 ]
 %postun libs
 if [ "$1" -eq 0 ]
   then
-	%{_sbindir}/update-alternatives --remove pgsql-ld-conf          %{pgbaseinstdir}/share/postgresql-9.3-libs.conf
+	%{_sbindir}/update-alternatives --remove pgsql-ld-conf          %{pgbaseinstdir}/share/postgresql-9.4devel-libs.conf
 	/sbin/ldconfig
 fi
 
@@ -745,6 +746,9 @@ rm -rf %{buildroot}
 %{pgbaseinstdir}/share/man/man1/vacuumdb.*
 %{pgbaseinstdir}/share/man/man3/*
 %{pgbaseinstdir}/share/man/man7/*
+%{pgbaseinstdir}/share/extension/worker_spi--1.0.sql
+%{pgbaseinstdir}/share/extension/worker_spi.control
+
 
 %files docs
 %defattr(-,root,root)
@@ -873,7 +877,7 @@ rm -rf %{buildroot}
 %{pgbaseinstdir}/lib/libpgtypes.so.*
 %{pgbaseinstdir}/lib/libecpg_compat.so.*
 %{pgbaseinstdir}/lib/libpqwalreceiver.so
-%config(noreplace) %{pgbaseinstdir}/share/postgresql-9.3-libs.conf
+%config(noreplace) %{pgbaseinstdir}/share/postgresql-9.4devel-libs.conf
 
 %files server -f pg_server.lst
 %defattr(-,root,root)

@@ -48,7 +48,7 @@ then
 fi
 
 # Set defaults for configuration variables
-SLONENGINE=/usr/pgsql-9.3/bin
+SLONENGINE=/usr/pgsql-9.4devel/bin
 SLONDAEMON=$SLONENGINE/slon
 SLONCONF=/etc/slony1-93/slon.conf
 SLONPID=/var/run/slony1-93/slon.pid

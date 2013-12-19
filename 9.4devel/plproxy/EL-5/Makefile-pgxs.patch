@@ -5,7 +5,7 @@
  
  # libpq config
 -PG_CONFIG = pg_config
-+PG_CONFIG = /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG = /usr/pgsql-9.4devel/bin/pg_config
  PQINCSERVER = $(shell $(PG_CONFIG) --includedir-server)
  PQINC = $(shell $(PG_CONFIG) --includedir)
  PQLIB = $(shell $(PG_CONFIG) --libdir)

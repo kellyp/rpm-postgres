@@ -5,7 +5,7 @@
  ifdef USE_PGXS
  ifndef PG_CONFIG
 -PG_CONFIG := pg_config
-+PG_CONFIG := /usr/pgsql-9.3/bin/pg_config
++PG_CONFIG := /usr/pgsql-9.4devel/bin/pg_config
  endif
  PGXS := $(shell $(PG_CONFIG) --pgxs)
  include $(PGXS)

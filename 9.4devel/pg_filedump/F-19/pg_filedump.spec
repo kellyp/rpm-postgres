@@ -1,5 +1,5 @@
 %global pgmajorversion 93
-%global pginstdir /usr/pgsql-9.3
+%global pginstdir /usr/pgsql-9.4devel
 %global sname pg_filedump
 
 Summary:	PostgreSQL File Dump Utility

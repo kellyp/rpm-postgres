@@ -1,4 +1,4 @@
-%global pginstdir /usr/pgsql-9.3
+%global pginstdir /usr/pgsql-9.4devel
 %global pgmajorversion 93
 %global _slonconffilter /etc/slon_tools.conf
 %global __requires_exclude ^(%{_slonconffilter})$

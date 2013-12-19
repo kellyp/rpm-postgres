@@ -44,7 +44,7 @@ QUICKSTART (note that this requires postgresql93-server installed)
 -----------------------------------------------------------------------------
 For a fresh installation, you will need to initialize the cluster first. Run:
 
-	/usr/pgsql-9.3/bin/postgresql93-setup initdb
+	/usr/pgsql-9.4devel/bin/postgresql93-setup initdb
 
 as root, and it will prepare a new database cluster for you. Then you will 
 need to start PostgreSQL. Again as root, run:
@@ -78,7 +78,7 @@ In the default installation, only postgres user is allowed to access to
 the database server, because initdb in the RPMs pick up "peer" auth 
 method in the RPMs. 
 
-All the binaries are installed under /usr/pgsql-9.3/bin. However, the 
+All the binaries are installed under /usr/pgsql-9.4devel/bin. However, the 
 tools that are compatible with the previous releases are symlinked under 
 /usr/bin directory. Please note that RPMs are using alternatives method 
 in here, so whenever a newer major version is installed, symlinks will 
@@ -98,7 +98,7 @@ are under $PATH:
 - psql
 - reindexdb
 
-You may want to add /usr/pgsql-9.3/bin to your $PATH variable in 
+You may want to add /usr/pgsql-9.4devel/bin to your $PATH variable in 
 /etc/profile, if you want to use them easily. However, please note that 
 this may lead to some unintentional side effects, so be careful.
 
@@ -120,7 +120,7 @@ and run the dump file through psql to restore your data.
 In 9.1+, the RPMs also support in-place upgrade from th immediately 
 previous major release.  Currently, you can upgrade in-place
 from 9.2.x to 9.3.x.  Just run:
-$ /usr/pgsql-9.3/bin/postgresql93-setup upgrade
+$ /usr/pgsql-9.4devel/bin/postgresql93-setup upgrade
 
 Please note that 9.2 and 9.3 contrib RPMs needs	to be installed	for this 
 feature	to work.
@@ -168,18 +168,18 @@ In particular, the documentation directory can be /usr/doc, /usr/doc/packages,
 However, the Red Hat / Scientific Linux ( CentOS / Fedora RPM's install 
 the files like this:
 
-Executables:		/usr/bin and /usr/pgsql-9.3/bin
-Libraries:		/usr/pgsql-9.3/lib
-Documentation:		/usr/pgsql-9.3/doc
-Contrib documentation:	/usr/pgsql-9.3/doc
+Executables:		/usr/bin and /usr/pgsql-9.4devel/bin
+Libraries:		/usr/pgsql-9.4devel/lib
+Documentation:		/usr/pgsql-9.4devel/doc
+Contrib documentation:	/usr/pgsql-9.4devel/doc
 Source:			not installed
 Data:			/var/lib/pgsql/9.3/data
 Backup area:		/var/lib/pgsql/9.3/backups
-Templates:		/usr/pgsql-9.3/share
-Procedural Languages:	/usr/pgsql-9.3/lib
-Development Headers:	/usr/pgsql-9.3/include
-Other shared data:	/usr/pgsql-9.3/share
-Regression tests:	/usr/pgsql-9.3/lib/test
+Templates:		/usr/pgsql-9.4devel/share
+Procedural Languages:	/usr/pgsql-9.4devel/lib
+Development Headers:	/usr/pgsql-9.4devel/include
+Other shared data:	/usr/pgsql-9.4devel/share
+Regression tests:	/usr/pgsql-9.4devel/lib/test
 
 While it may seem gratuitous to place these files in different locations, the
 FHS requires it -- distributions should not ever touch /usr/local.  It may
@@ -232,7 +232,7 @@ your database machine is up to the task.
 
 To run the regression tests under the RPM installation, make sure that the
 postmaster has been started (if not, su to root and do "systemctl start
-postgresql-9.3.service"), cd to /usr/pgsql-9.3/lib/test/regress, su to 
+postgresql-9.3.service"), cd to /usr/pgsql-9.4devel/lib/test/regress, su to 
 postgres, and execute "make check". This command will start the 
 regression tests and will both show the results to the screen and store 
 the results in the file regress.out.
@@ -335,8 +335,8 @@ CONTRIB FILES
 -------------------------------------------------------------------------------
 The contents of the contrib tree are packaged into the -contrib subpackage
 and are processed with make and make install. Most of the modules are in 
-/usr/pgsql-9.3/lib for loadable modules, and binaries are in 
-/usr/pgsql-9.3/bin.  In the future these files may be split out, 
+/usr/pgsql-9.4devel/lib for loadable modules, and binaries are in 
+/usr/pgsql-9.4devel/bin.  In the future these files may be split out, 
 depending upon function and dependencies.
 
 

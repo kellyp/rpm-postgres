@@ -22,7 +22,7 @@
 # on 
 
 %global pgmajorversion 93
-%global	pginstdir /usr/pgsql-9.3
+%global	pginstdir /usr/pgsql-9.4devel
 
 Name:		postgresql%{pgmajorversion}-odbc
 Summary:	PostgreSQL ODBC driver

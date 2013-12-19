@@ -84,7 +84,7 @@ fi
 LOCALEPARAMETER=$2
 
 # Set defaults for configuration variables
-PGENGINE=/usr/pgsql-9.3/bin
+PGENGINE=/usr/pgsql-9.4devel/bin
 PGPORT=5432
 PGDATA=/var/lib/pgsql/9.3/data
 PGLOG=/var/lib/pgsql/9.3/pgstartup.log

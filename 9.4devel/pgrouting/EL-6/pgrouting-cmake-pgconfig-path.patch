@@ -4,14 +4,14 @@
  
      find_program(POSTGRESQL_EXECUTABLE NAMES postgres
          PATHS
-+	/usr/pgsql-9.3/bin/
++	/usr/pgsql-9.4devel/bin/
          /usr/lib/postgresql/*/bin/
          )
      message(STATUS "POSTGRESQL_EXECUTABLE is " ${POSTGRESQL_EXECUTABLE})
  
      find_program(POSTGRESQL_PG_CONFIG NAMES pg_config
          PATHS
-+	/usr/pgsql-9.3/bin/
++	/usr/pgsql-9.4devel/bin/
          /usr/lib/postgresql/*/bin/
          )
      message(STATUS "POSTGRESQL_PG_CONFIG is " ${POSTGRESQL_PG_CONFIG})
@@ -19,7 +19,7 @@
  
      find_path(POSTGRESQL_INCLUDE_DIR postgres.h
          ${T_POSTGRESQL_INCLUDE_DIR}
-+	/usr/pgsql-9.3/include/server
++	/usr/pgsql-9.4devel/include/server
          /usr/include/server
          /usr/include/pgsql/server
          /usr/local/include/pgsql/server

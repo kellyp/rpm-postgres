@@ -1,8 +1,0 @@
-
-
-ARCH=`rpm --eval "%{_arch}"`
-DIR=`pwd`
-DIST=.rhel6
-SPECFILE="uuid.spec"
-
-include ../../../common/Makefile.global
