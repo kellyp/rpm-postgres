@@ -70,7 +70,7 @@
 %{!?selinux:%define selinux 1}
 
 Summary:	PostgreSQL client programs and libraries
-Name:		%{oname}%{packageversion}
+Name:		%{oname}
 Version:	9.4devel
 Release:	2PGDG%{?dist}
 License:	PostgreSQL
@@ -401,6 +401,8 @@ export LIBNAME=%{_lib}
 	--docdir=%{_docdir}
 
 make %{?_smp_mflags} all
+make html
+make man
 make %{?_smp_mflags} -C contrib all
 %if %uuid
 make %{?_smp_mflags} -C contrib/uuid-ossp all
@@ -575,6 +577,8 @@ chmod 0700 /var/log/pgsql
 
 %post server
 /sbin/ldconfig
+%{_sbindir}/update-alternatives --install /usr/bin/pg_ctl pgsql-pg_ctl %{pgbaseinstdir}/bin/pg_ctl 930
+%{_sbindir}/update-alternatives --install /usr/bin/initdb pgsql-initdb %{pgbaseinstdir}/bin/initdb 930
 if [ $1 -eq 1 ] ; then
     # Initial installation
     /bin/systemctl daemon-reload >/dev/null 2>&1 || :
@@ -594,8 +598,11 @@ if [ $1 -eq 0 ] ; then
 	/bin/systemctl stop postgresql-9.4devel.service >/dev/null 2>&1 || :
 fi
 
+
 %postun server
 /sbin/ldconfig 
+%{_sbindir}/update-alternatives --remove pgsql-pg_ctl 	%{pgbaseinstdir}/bin/pg_ctl
+%{_sbindir}/update-alternatives --remove pgsql-initdb 	%{pgbaseinstdir}/bin/initdb
 /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 if [ $1 -ge 1 ] ; then
 	# Package upgrade, not uninstall
