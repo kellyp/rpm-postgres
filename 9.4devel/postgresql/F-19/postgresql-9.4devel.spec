@@ -71,8 +71,8 @@
 
 Summary:	PostgreSQL client programs and libraries
 Name:		%{oname}
-Version:	9.4devel
-Release:	2PGDG%{?dist}
+Version:	%{majorversion}
+Release:	%{buildnumber}%{?dist}
 License:	PostgreSQL
 Group:		Applications/Databases
 Url:		http://www.postgresql.org/ 

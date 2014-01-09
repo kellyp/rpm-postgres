@@ -48,6 +48,7 @@ rpm: prep
 	--define  "_builddir $(PWD)" \
 	--define "_srcrpmdir $(PWD)" \
 	--define "_rpmdir $(PWD)" \
+  --define "buildnumber $(BUILD_NUMBER)" \
 	--define "dist $(DIST)" -bb $(SPECFILE)
 
 build: bfsrpm
