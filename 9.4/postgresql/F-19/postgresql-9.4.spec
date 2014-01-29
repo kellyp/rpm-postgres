@@ -89,9 +89,9 @@ Source16:	filter-requires-perl-Pg.sh
 Source17:	postgresql%{packageversion}-setup
 Source18:	postgresql-%{majorversion}.service
 
-Patch1:    rpm-pgsql.patch
-Patch3:    postgresql-logging.patch
-Patch6:    postgresql-perl-rpath.patch
+# Patch1:    rpm-pgsql.patch
+# Patch3:    postgresql-logging.patch
+# Patch6:    postgresql-perl-rpath.patch
 
 Buildrequires:	perl glibc-devel bison flex >= 2.5.31
 Requires:	/sbin/ldconfig 
@@ -308,10 +308,10 @@ benchmarks.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%patch1 -p1
-%patch3 -p1
+# %patch1 -p1
+# %patch3 -p1
 # patch5 is applied later
-%patch6 -p1
+# %patch6 -p1
 
 cp -p %{SOURCE12} .
 
