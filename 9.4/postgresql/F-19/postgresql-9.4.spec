@@ -816,45 +816,46 @@ rm -rf %{buildroot}
 %if %uuid
 %{pgbaseinstdir}/lib/uuid-ossp.so
 %endif
-%{pgbaseinstdir}/share/extension/adminpack*
-%{pgbaseinstdir}/share/extension/autoinc*
-%{pgbaseinstdir}/share/extension/btree_gin*
-%{pgbaseinstdir}/share/extension/btree_gist*
-%{pgbaseinstdir}/share/extension/chkpass*
-%{pgbaseinstdir}/share/extension/citext*
-%{pgbaseinstdir}/share/extension/cube*
-%{pgbaseinstdir}/share/extension/dblink*
-%{pgbaseinstdir}/share/extension/dict_int*
-%{pgbaseinstdir}/share/extension/dict_xsyn*
-%{pgbaseinstdir}/share/extension/earthdistance*
-%{pgbaseinstdir}/share/extension/file_fdw*
-%{pgbaseinstdir}/share/extension/fuzzystrmatch*
-%{pgbaseinstdir}/share/extension/hstore*
-%{pgbaseinstdir}/share/extension/insert_username*
-%{pgbaseinstdir}/share/extension/intagg*
-%{pgbaseinstdir}/share/extension/intarray*
-%{pgbaseinstdir}/share/extension/isn*
-%{pgbaseinstdir}/share/extension/lo*
-%{pgbaseinstdir}/share/extension/ltree*
-%{pgbaseinstdir}/share/extension/moddatetime*
-%{pgbaseinstdir}/share/extension/pageinspect*
-%{pgbaseinstdir}/share/extension/pg_buffercache*
-%{pgbaseinstdir}/share/extension/pg_freespacemap*
-%{pgbaseinstdir}/share/extension/pg_stat_statements*
-%{pgbaseinstdir}/share/extension/pg_trgm*
-%{pgbaseinstdir}/share/extension/pgcrypto*
-%{pgbaseinstdir}/share/extension/pgrowlocks*
-%{pgbaseinstdir}/share/extension/pgstattuple*
-%{pgbaseinstdir}/share/extension/postgres_fdw*
-%{pgbaseinstdir}/share/extension/refint*
-%{pgbaseinstdir}/share/extension/seg*
-%{pgbaseinstdir}/share/extension/sslinfo*
-%{pgbaseinstdir}/share/extension/tablefunc*
-%{pgbaseinstdir}/share/extension/tcn*
-%{pgbaseinstdir}/share/extension/test_parser*
-%{pgbaseinstdir}/share/extension/timetravel*
-%{pgbaseinstdir}/share/extension/tsearch2*
-%{pgbaseinstdir}/share/extension/unaccent*
+
+# %{pgbaseinstdir}/share/extension/adminpack*
+# %{pgbaseinstdir}/share/extension/autoinc*
+# %{pgbaseinstdir}/share/extension/btree_gin*
+# %{pgbaseinstdir}/share/extension/btree_gist*
+# %{pgbaseinstdir}/share/extension/chkpass*
+# %{pgbaseinstdir}/share/extension/citext*
+# %{pgbaseinstdir}/share/extension/cube*
+# %{pgbaseinstdir}/share/extension/dblink*
+# %{pgbaseinstdir}/share/extension/dict_int*
+# %{pgbaseinstdir}/share/extension/dict_xsyn*
+# %{pgbaseinstdir}/share/extension/earthdistance*
+# %{pgbaseinstdir}/share/extension/file_fdw*
+# %{pgbaseinstdir}/share/extension/fuzzystrmatch*
+# %{pgbaseinstdir}/share/extension/hstore*
+# %{pgbaseinstdir}/share/extension/insert_username*
+# %{pgbaseinstdir}/share/extension/intagg*
+# %{pgbaseinstdir}/share/extension/intarray*
+# %{pgbaseinstdir}/share/extension/isn*
+# %{pgbaseinstdir}/share/extension/lo*
+# %{pgbaseinstdir}/share/extension/ltree*
+# %{pgbaseinstdir}/share/extension/moddatetime*
+# %{pgbaseinstdir}/share/extension/pageinspect*
+# %{pgbaseinstdir}/share/extension/pg_buffercache*
+# %{pgbaseinstdir}/share/extension/pg_freespacemap*
+# %{pgbaseinstdir}/share/extension/pg_stat_statements*
+# %{pgbaseinstdir}/share/extension/pg_trgm*
+# %{pgbaseinstdir}/share/extension/pgcrypto*
+# %{pgbaseinstdir}/share/extension/pgrowlocks*
+# %{pgbaseinstdir}/share/extension/pgstattuple*
+# %{pgbaseinstdir}/share/extension/postgres_fdw*
+# %{pgbaseinstdir}/share/extension/refint*
+# %{pgbaseinstdir}/share/extension/seg*
+# %{pgbaseinstdir}/share/extension/sslinfo*
+# %{pgbaseinstdir}/share/extension/tablefunc*
+# %{pgbaseinstdir}/share/extension/tcn*
+# %{pgbaseinstdir}/share/extension/test_parser*
+# %{pgbaseinstdir}/share/extension/timetravel*
+# %{pgbaseinstdir}/share/extension/tsearch2*
+# %{pgbaseinstdir}/share/extension/unaccent*
 %if %uuid
 %{pgbaseinstdir}/share/extension/uuid-ossp*
 %endif
