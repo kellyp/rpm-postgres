@@ -46,6 +46,7 @@
 
 %{!?kerbdir:%define kerbdir "/usr"}
 
+%define _unpackaged_files_terminate_build 0
 # This is a macro to be used with find_lang and other stuff
 %define majorversion 9.4
 %define majorversionforlang 9.4
