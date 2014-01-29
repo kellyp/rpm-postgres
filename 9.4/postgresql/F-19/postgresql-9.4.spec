@@ -72,7 +72,7 @@
 Summary:	PostgreSQL client programs and libraries
 Name:		%{oname}
 Version:	%{majorversion}
-Release:	27%{?dist}
+Release:	%{buildnumber}%{?dist}
 License:	PostgreSQL
 Group:		Applications/Databases
 Url:		http://www.postgresql.org/ 
