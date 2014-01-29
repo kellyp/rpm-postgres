@@ -763,7 +763,6 @@ rm -rf %{buildroot}
 %doc *-A4.pdf
 %doc src/tutorial
 %doc doc/html
-%doc %{pgbaseinstdir}/share/doc/postgresql/extension/*
 
 %files contrib
 %defattr(-,root,root)
