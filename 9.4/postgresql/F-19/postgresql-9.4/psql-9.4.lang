@@ -1,0 +1,11 @@
+%lang(ru) /usr/pgsql-9.4/share/locale/ru/LC_MESSAGES/psql-9.4.mo
+%lang(pl) /usr/pgsql-9.4/share/locale/pl/LC_MESSAGES/psql-9.4.mo
+%lang(ja) /usr/pgsql-9.4/share/locale/ja/LC_MESSAGES/psql-9.4.mo
+%lang(pt) /usr/pgsql-9.4/share/locale/pt_BR/LC_MESSAGES/psql-9.4.mo
+%lang(zh) /usr/pgsql-9.4/share/locale/zh_CN/LC_MESSAGES/psql-9.4.mo
+%lang(cs) /usr/pgsql-9.4/share/locale/cs/LC_MESSAGES/psql-9.4.mo
+%lang(zh) /usr/pgsql-9.4/share/locale/zh_TW/LC_MESSAGES/psql-9.4.mo
+%lang(it) /usr/pgsql-9.4/share/locale/it/LC_MESSAGES/psql-9.4.mo
+%lang(de) /usr/pgsql-9.4/share/locale/de/LC_MESSAGES/psql-9.4.mo
+%lang(fr) /usr/pgsql-9.4/share/locale/fr/LC_MESSAGES/psql-9.4.mo
+%lang(es) /usr/pgsql-9.4/share/locale/es/LC_MESSAGES/psql-9.4.mo

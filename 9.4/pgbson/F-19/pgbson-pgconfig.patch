@@ -1,0 +1,31 @@
+--- pgbson/FindPostgres.cmake.old	2013-12-12 13:34:15.906735070 +0100
++++ pgbson/FindPostgres.cmake	2013-12-12 13:34:37.650562341 +0100
+@@ -6,24 +6,24 @@
+     message(STATUS "Looking for PostgreSQL...")
+ 
+     execute_process(
+-        COMMAND pg_config --includedir-server
++        COMMAND /usr/pgsql-9.4devel/bin/pg_config --includedir-server
+         OUTPUT_VARIABLE OUT_Postgres_INCLUDEDIR OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+ 
+     if(NOT OUT_Postgres_INCLUDEDIR)
+         set(Postgres_FOUND FALSE)
+-        message(FATAL_ERROR "pg_config unavailable. Make sure it is in your path")
++        message(FATAL_ERROR "/usr/pgsql-9.4devel/bin/pg_config unavailable. Make sure it is in your path")
+     else()
+         set(Postgres_FOUND TRUE)
+     endif()
+ 
+     execute_process(
+-        COMMAND pg_config --libdir
++        COMMAND /usr/pgsql-9.4devel/bin/pg_config --libdir
+         OUTPUT_VARIABLE OUT_Postgres_LIBDIR OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+ 
+     execute_process(
+-        COMMAND pg_config --sharedir
++        COMMAND /usr/pgsql-9.4devel/bin/pg_config --sharedir
+         OUTPUT_VARIABLE OUT_Postgres_SHAREDIR OUTPUT_STRIP_TRAILING_WHITESPACE
+     )
+ 

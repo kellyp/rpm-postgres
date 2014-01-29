@@ -1,0 +1,8 @@
+--- Makefile.old	2012-11-27 07:41:18.894083898 +0200
++++ Makefile	2012-11-27 07:41:28.346090054 +0200
+@@ -1,4 +1,4 @@
+-PG_CONFIG = pg_config
++PG_CONFIG = /usr/pgsql-9.2/bin/pg_config
+ 
+ pg_version := $(word 2,$(shell $(PG_CONFIG) --version))
+ extensions_supported = $(filter-out 6.% 7.% 8.% 9.0%,$(pg_version))
