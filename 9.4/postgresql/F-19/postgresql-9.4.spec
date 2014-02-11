@@ -578,8 +578,9 @@ chmod 0700 /var/log/pgsql
 
 %post server
 /sbin/ldconfig
-%{_sbindir}/update-alternatives --install /usr/bin/pg_ctl pgsql-pg_ctl %{pgbaseinstdir}/bin/pg_ctl 930
-%{_sbindir}/update-alternatives --install /usr/bin/initdb pgsql-initdb %{pgbaseinstdir}/bin/initdb 930
+%{_sbindir}/update-alternatives --install /bin/pg_ctl pgsql-pg_ctl %{pgbaseinstdir}/bin/pg_ctl 930
+%{_sbindir}/update-alternatives --install /bin/initdb pgsql-initdb %{pgbaseinstdir}/bin/initdb 930
+%{_sbindir}/update-alternatives --install /bin/pg_config pgsql-pg_config %{pgbaseinstdir}/bin/pg_config 930
 if [ $1 -eq 1 ] ; then
     # Initial installation
     /bin/systemctl daemon-reload >/dev/null 2>&1 || :
@@ -602,6 +603,7 @@ fi
 
 %postun server
 /sbin/ldconfig 
+%{_sbindir}/update-alternatives --remove pgsql-pg_config 	%{pgbaseinstdir}/bin/pg_config
 %{_sbindir}/update-alternatives --remove pgsql-pg_ctl 	%{pgbaseinstdir}/bin/pg_ctl
 %{_sbindir}/update-alternatives --remove pgsql-initdb 	%{pgbaseinstdir}/bin/initdb
 /bin/systemctl daemon-reload >/dev/null 2>&1 || :
