@@ -7,7 +7,7 @@ FILES=*
 for f in $FILES
 do
   echo "Processing $f file..."
-  curl -T $f http://rizzo/nexus/content/repositories/yum/$2/$f -u $3:$4
+  curl -T $f https://rizzo.airgap.us/content/repositories/yum/$2/$f -u $3:$4
 done
 
 
